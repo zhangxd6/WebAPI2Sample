@@ -14,20 +14,30 @@ namespace WebApi2Sample
         {
             // Web API configuration and services
 
+            // Convert between Pascal and Camel casing
             var index = config.Formatters.IndexOf(config.Formatters.JsonFormatter);
             config.Formatters[index] = new JsonMediaTypeFormatter
             {
-                SerializerSettings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }
+                SerializerSettings = new JsonSerializerSettings
+                {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+                }
             };
 
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
             //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
+            //    name: "RPCApi",
+            //    routeTemplate: "api/{controller}/{action}/{id}",
             //    defaults: new { id = RouteParameter.Optional }
-            //);
+            //);a
         }
     }
 }

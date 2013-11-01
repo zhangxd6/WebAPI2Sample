@@ -7,33 +7,26 @@ using System.Web.Http;
 using System.Web.Routing;
 using WebApi2Sample.Models;
 
-/*
- * Originally from http://bit.ly/zSrIcB but enhanced from there.
- *
-*/
-
 namespace WebApi2Sample.Controllers
 {
-    [RoutePrefix("api/Products")]
-    public class ProductsController : ApiController
+    public class Products2Controller : ApiController
     {
         private static readonly List<Product> Products = new List<Product>()
         {
             new Product { Id = 1, Name = "Tomato Soup", Category = "Groceries", Price = 1 },
             new Product { Id = 2, Name = "Yo-yo", Category = "Toys", Price = 3.75M },
-            new Product { Id = 3, Name = "Hammer", Category = "Hardware", Price = 16.99M },
-            new Product { Id = 4, Name = "Banana", Price = 0.59M }
+            new Product { Id = 3, Name = "Hammer", Category = "Hardware", Price = 16.99M }
         };
 
-        // GET api/Products
-        [Route("")]
+        // GET api/products2
+        [Route("api/products2")]
         public IEnumerable<Product> Get()
         {
             return Products;
         }
 
-        // GET api/Products/5
-        [Route("{id:int}")]
+        // GET api/products2/5
+        [Route("api/products2/{id}")]
         //[Authorize]
         public IHttpActionResult Get(int id)
         {
@@ -45,8 +38,8 @@ namespace WebApi2Sample.Controllers
             return Ok(product);
         }
 
-        // POST api/Products
-        [Route("")]
+        // POST api/products2
+        [Route("api/products2")]
         public IHttpActionResult Post([FromBody]Product value)
         {
             var maxId = Products.Count == 0 ? 0 : Products.Max(p => p.Id);
@@ -56,8 +49,8 @@ namespace WebApi2Sample.Controllers
             return Ok(value.Id);
         }
 
-        // PUT api/Products/5
-        [Route("{id:int}")]
+        // PUT api/products2/5
+        [Route("api/products2/{id}")]
         public IHttpActionResult Put(int id, [FromBody]Product value)
         {
             var product = Products.FirstOrDefault((p) => p.Id == id);
@@ -73,8 +66,8 @@ namespace WebApi2Sample.Controllers
             return Ok(product.Id);
         }
 
-        // DELETE api/Products/5
-        [Route("{id:int}")]
+        // DELETE api/products2/5
+        [Route("api/products2/{id}")]
         public IHttpActionResult Delete(int id)
         {
             var product = Products.FirstOrDefault((p) => p.Id == id);
@@ -85,13 +78,6 @@ namespace WebApi2Sample.Controllers
 
             Products.Remove(product);
             return Ok();
-        }
-
-        [Route("SomeOtherMethodName")]
-        [HttpGet]
-        public IHttpActionResult SomeOtherMethodName()
-        {
-            return Ok("Consider it done.");
         }
     }
 }

@@ -5,7 +5,6 @@
 /// <reference path="../models/product.js" />
 /// <reference path="../lib/toastr.js" />
 
-
 /*global $:true, ko:true, Product: true, toastr: true */
 var ProductsViewModel = (function () {
     'use strict';
@@ -51,7 +50,7 @@ var ProductsViewModel = (function () {
         var self = this;
 
         $.getJSON('api/products/' + encodeURIComponent(self.searchText)).done(function (product) {
-            toastr.success('Found product: ' + product.name + ' with id: ' + product.id + ' in category: ' + product.category);
+            toastr.success('Found product: ' + product.name + '<br/> with id: ' + product.id + '<br/> in category: ' + product.category);
         }).fail(function (jqXhr, textStatus, err) {
             toastr.error(err, 'Error getting product by id');
         });
@@ -74,7 +73,7 @@ var ProductsViewModel = (function () {
         });
     };
 
-    /** 
+    /**
     * Adds a new product, then updates its id with that given by the server
     */
     ProductsViewModel.prototype.addProduct = function () {
@@ -98,8 +97,7 @@ var ProductsViewModel = (function () {
         });
     };
 
-
-    /** 
+    /**
     * Saves changes to the given product.
     * @param {Product} productToDelete - The product to save
     */
@@ -110,10 +108,16 @@ var ProductsViewModel = (function () {
             dataType: 'json',
             contentType: 'application/json',
             data: JSON.stringify(product)
-        }).done(function () {
+        }).done(function (id) {
             product.isInEditMode = false;
         }).fail(function (jqXHR, textStatus, err) {
             toastr.error(err, 'Error saving product');
+        });
+    };
+
+    ProductsViewModel.prototype.rpcGetSample = function () {
+        $.getJSON('api/products/SomeOtherMethodName').done(function (result) {
+            toastr.success(result);
         });
     };
 
