@@ -92,8 +92,11 @@
     <Content Include="Scripts\lib\knockout.punches.js">
       <DependentUpon>knockout-3.0.0.min.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\lib\require.js" />
+    <Content Include="Scripts\lib\text.js" />
     <Content Include="Scripts\lib\toastr.js" />
     <Content Include="Scripts\lib\underscore.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\models\product.js" />
     <Content Include="Scripts\viewmodels\products.js" />
     <Content Include="Web.config" />
