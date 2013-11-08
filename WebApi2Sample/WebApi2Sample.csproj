@@ -77,7 +77,14 @@
     <Content Include="Content\bootstrap.min.css">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
+    <Content Include="Content\default2.css" />
+    <Content Include="Content\default3.css">
+      <DependentUpon>default3.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\pocketgrid.css" />
     <Content Include="Content\toastr.css" />
+    <Content Include="Default3.html" />
+    <Content Include="Default2.html" />
     <Content Include="Default.html" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\lib\bootstrap.js" />
@@ -110,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Content\default3.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

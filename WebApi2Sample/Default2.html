@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Product App</title>
+
+    <link href="Content/pocketgrid.css" rel="stylesheet" />
+    <link href="Content/toastr.css" rel="stylesheet" />
+    <link href="Content/default2.css" rel="stylesheet" />
+
+    <script src="Scripts/lib/jquery-2.0.3.min.js"></script>
+    <script src="Scripts/lib/underscore.js"></script>
+
+    <script src="Scripts/lib/knockout-3.0.0.min.js"></script>
+    <script src="Scripts/lib/knockout.punches.js"></script>
+    <script src="Scripts/lib/knockout-es5.min.js"></script>
+    
+    <script src="Scripts/lib/toastr.js"></script>
+
+    <script src="Scripts/models/product.js"></script>
+    <script src="Scripts/viewmodels/products.js"></script>    
+
+    <script>
+        /*global $:true, ko:true, ProductsViewModel: true, toastr: true */
+        $(function () {
+            'use strict';
+            ko.punches.interpolationMarkup.enable();
+            toastr.options.newestOnTop = false;
+
+            var productsViewModel = new ProductsViewModel();
+            productsViewModel.getAllProducts();
+
+            ko.applyBindings(productsViewModel);
+        });
+    </script>
+
+</head>
+<body>
+    <div>
+        <div class="block-group">
+            <section class="product-list block">
+                <h2 class="text-center">{{ title }}</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="id">Id</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: products">
+                        <!-- ko ifnot: isInEditMode -->                        
+                        <tr>
+                            <td class="id">{{ id }}</td>
+                            <td>{{ name }}</td>
+                            <td>{{ category }}</td>
+                            <td>${{ price }}</td>
+                            <td class="actions">
+                                <button class="edit" data-bind="click: setEditable">Edit</button>
+                                <button class="delete" data-bind="click: $parent.deleteProduct.bind($parent)">Delete</button>
+                            </td>
+                        </tr>
+                        <!-- /ko -->
+                        
+                        <!-- ko if: isInEditMode -->
+                        <tr>
+                            <td class="id">{{ id }}</td>
+                            <td><input type="text" data-bind="value: name " /></td>
+                            <td><input type="text" data-bind="value: category " /></td>
+                            <td>
+                                <span>$</span>
+                                <input type="number" data-bind="value: price" step="0.01" />
+                            </td>
+                            <td class="actions">
+                                <button data-bind="click: $parent.saveProduct.bind($parent)">Save</button>
+                            </td>
+                        </tr>
+                        <!-- /ko -->
+
+                    </tbody>
+                </table>
+                <button class="refresh" data-bind="click: getAllProducts">Refresh List</button>
+            </section>
+            
+            <section class="search block">
+                <h2>Search by ID</h2>
+                <div class="block-group">
+                    <div class="text block"><input type="text" data-bind="value: searchText" /></div>
+                    <div class="button block"><button data-bind="click: findProduct">Search</button></div>                    
+                </div>
+            </section>
+                
+            <section class="add-new block">
+                <h2>Add New Product</h2>
+                <div data-bind="with: newProduct">
+                    <div>
+                        <label>Name</label>
+                        <input type="text" data-bind="value: name" />    
+                    </div>
+                    <div>
+                        <label>Category</label>
+                        <input type="text" data-bind="value: category " />    
+                    </div>
+                    
+                    <div>
+                        <label>Price</label>
+                        <input type="number" data-bind="value: price" step="0.01" />    
+                    </div>
+                    
+                    <div>
+                        <div class="actions">
+                            <button data-bind="click: $parent.addProduct.bind($parent)">Add Product</button>        
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        
+        <button class="rpc" data-bind="click: rpcGetSample">RPC Style Get Sample</button>
+    </div>
+</body>
+</html>

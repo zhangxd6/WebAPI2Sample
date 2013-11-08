@@ -1,0 +1,133 @@
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  margin: 1px; }
+
+h2 {
+  margin: 0;
+  padding: 0; }
+
+button {
+  -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0 0 inset, rgba(0, 0, 0, 0.04706) 0 1px 2px 0;
+  box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0 0 inset, rgba(0, 0, 0, 0.04706) 0 1px 2px 0;
+  background-color: #006dcc;
+  border: none;
+  background-image: linear-gradient(#0088cc, #0044cc);
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+  -webkit-appearance: none; }
+
+button.rpc {
+  display: none; }
+
+section.product-list {
+  position: relative;
+  margin: 35px 0 0 0;
+  width: 99%; }
+  section.product-list table {
+    width: 100%; }
+    section.product-list table tr:nth-child(even) {
+      background-color: whitesmoke; }
+    section.product-list table th, section.product-list table td {
+      border-collapse: collapse;
+      text-align: left; }
+      section.product-list table th.id, section.product-list table td.id {
+        display: none; }
+      section.product-list table th.actions, section.product-list table td.actions {
+        text-align: right; }
+    section.product-list table td button.edit {
+      display: none; }
+  section.product-list button.refresh {
+    position: absolute;
+    top: 0;
+    right: 1px; }
+
+section.search {
+  height: 30px;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 99%; }
+  section.search h2 {
+    display: none; }
+  section.search .text.block {
+    width: 75%; }
+    section.search .text.block input {
+      width: 100%; }
+  section.search .button.block {
+    text-align: right;
+    width: 25%; }
+    section.search .button.block button {
+      height: 25px;
+      position: absolute;
+      top: 0;
+      right: 3px; }
+
+section.add-new {
+  margin: 5px 0 0 0; }
+  section.add-new label {
+    display: inline-block;
+    width: 25%; }
+  section.add-new input {
+    width: 70%; }
+  section.add-new div.actions {
+    text-align: right; }
+
+/* Small Tablet */
+@media (min-width: 584px) {
+  section.product-list {
+    margin: 55px 0 0 0; }
+    section.product-list table th.id,
+    section.product-list table td.id {
+      display: table-cell; }
+
+  section.search h2 {
+    display: block; }
+  section.search .text.block {
+    width: 85%; }
+  section.search .button.block button {
+    top: 25px; }
+
+  section.add-new label {
+    width: 90%; }
+  section.add-new input {
+    width: 98%; } }
+/* Large Tablet */
+@media (min-width: 752px) {
+  section.product-list {
+    margin: 0;
+    padding: 10px;
+    position: static; }
+    section.product-list table td button.edit {
+      display: inline; }
+    section.product-list button.refresh {
+      position: static; }
+
+  section.search {
+    width: 50%;
+    height: inherit;
+    position: static;
+    margin: 10px 0 0 0;
+    padding: 10px; }
+    section.search .text.block {
+      width: 100%; }
+      section.search .text.block input {
+        width: 100%; }
+    section.search .button.block {
+      text-align: left;
+      width: 24%; }
+      section.search .button.block button {
+        position: static; }
+
+  section.add-new {
+    margin: 10px 0 0 0;
+    width: 50%;
+    padding: 10px; }
+    section.add-new div.actions {
+      text-align: left; } }
+/* Desktop */
+@media (min-width: 1024px) {
+  section.product-list {
+    width: 50%; } }
+
