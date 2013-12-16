@@ -5,33 +5,6 @@
 
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/toastr.css" rel="stylesheet" />
-
-    <script src="Scripts/lib/jquery-2.0.3.min.js"></script>
-    <script src="Scripts/lib/underscore.js"></script>
-
-    <script src="Scripts/lib/knockout-3.0.0.min.js"></script>
-    <script src="Scripts/lib/knockout.punches.js"></script>
-    <script src="Scripts/lib/knockout-es5.min.js"></script>
-    
-    <script src="Scripts/lib/toastr.js"></script>
-
-    <script src="Scripts/models/product.js"></script>
-    <script src="Scripts/viewmodels/products.js"></script>    
-
-    <script>
-        /*global $:true, ko:true, ProductsViewModel: true, toastr: true */
-        $(function () {
-            'use strict';
-            ko.punches.interpolationMarkup.enable();
-            toastr.options.newestOnTop = false;
-
-            var productsViewModel = new ProductsViewModel();
-            productsViewModel.getAllProducts();
-
-            ko.applyBindings(productsViewModel);
-        });
-    </script>
-
 </head>
 <body>
     <div class="container">
@@ -115,5 +88,6 @@
         
         <button class="btn" data-bind="click: rpcGetSample">RPC Style Get Sample</button>
     </div>
+    <script data-main="main" src="Scripts/lib/require.js"></script>
 </body>
 </html>
