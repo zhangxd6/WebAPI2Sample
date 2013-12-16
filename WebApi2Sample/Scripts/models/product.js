@@ -2,14 +2,15 @@
 /// <reference path="../lib/knockout-3.0.0.min.js" />
 /// <reference path="../lib/underscore.js" />
 /// <reference path="../lib/knockout-es5.min.js" />
+/// <reference path="../lib/require.js" />
 
-/*global ko: true, $:true */
-var Product = (function () {
+/*global define: true */
+define(['knockout','ko_es5'],function (ko) {
     'use strict';
 
     /**
     * Initializes a new instance of the Product class
-    * @param {object} data - If supplied the data object 
+    * @param {object} data - If supplied the data object
     *   is used to populate the property values
     * @constructor
     */
@@ -34,4 +35,4 @@ var Product = (function () {
     };
 
     return Product;
-}());
+});

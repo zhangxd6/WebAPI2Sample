@@ -5,9 +5,17 @@
 /// <reference path="../models/product.js" />
 /// <reference path="../lib/toastr.js" />
 
-/*global $:true, ko:true, Product: true, toastr: true */
-var ProductsViewModel = (function () {
+/*global define: true */
+define(function (require) {
     'use strict';
+
+    var ko = require('knockout'),
+        $ = require('jquery'),
+        _ = require('underscore'),
+        Product = require('models/product'),
+        toastr = require('toastr');
+
+    require('ko_es5');
 
     /**
     * Initializes a new instance of the ProductsViewModel class
@@ -122,4 +130,4 @@ var ProductsViewModel = (function () {
     };
 
     return ProductsViewModel;
-}());
+});
