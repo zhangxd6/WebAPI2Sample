@@ -81,6 +81,9 @@
     <Content Include="Content\default3.css">
       <DependentUpon>default3.scss</DependentUpon>
     </Content>
+    <Content Include="Content\main.css">
+      <DependentUpon>main.scss</DependentUpon>
+    </Content>
     <Content Include="Content\pocketgrid.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Default3.html" />
