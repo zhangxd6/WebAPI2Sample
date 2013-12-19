@@ -10,9 +10,9 @@
   "bugs": {
     "url": "https://github.com/zhangxd6/WebAPI2Sample/issues"
   },
-   "dependencies" :
-  { "grunt" : "*"
-  , "grunt-contrib-watch" : "*"
+  "dependencies": {
+    "grunt": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-sass":"*"
   }
-
 }

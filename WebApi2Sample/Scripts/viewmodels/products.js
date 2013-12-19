@@ -1,4 +1,4 @@
-﻿/// <reference path="../lib/jquery-2.0.3.min.js" />
+/// <reference path="../lib/jquery-2.0.3.min.js" />
 /// <reference path="../lib/knockout-3.0.0.min.js" />
 /// <reference path="../lib/underscore.js" />
 /// <reference path="../lib/knockout-es5.min.js" />
@@ -128,6 +128,7 @@ define(function (require) {
             toastr.success(result);
         });
     };
+
 
     return ProductsViewModel;
 });
